@@ -68,7 +68,7 @@ const DatePicker = ({ isDarkMode, minDate, maxDate }) => {
 
     return (
         <>
-            <div className={`rounded-lg ${isDarkMode ? "p-4 m-4 mb-1 bg-gray-800" : "p-4 m-4 bg-yellow-300"}`}>
+            <div className={`rounded-lg text-center ${isDarkMode ? "p-4 m-4 mb-1 bg-gray-800" : "p-4 m-4 bg-yellow-300"}`}>
                 <select className={classes} value={day} onChange={(e) => setDay(e.target.value)}>
                     <option>{defaultDay}</option>
                     {Array.from({ length: daysInMonth }, (_, i) => i + 1).map((d) => (
@@ -94,7 +94,7 @@ const DatePicker = ({ isDarkMode, minDate, maxDate }) => {
                     ))}
                 </select>
             </div>
-            <aside className={`rounded-lg ${isDarkMode ? "p-0 mx-4 border border-slate-900 text-stone-400" : "p-0 mx-4 bg-yellow-300"}`}>
+            <aside className={`rounded-lg text-center ${isDarkMode ? "p-0 mx-4 border border-slate-900 text-stone-400" : "p-0 mx-4 bg-yellow-300"}`}>
                 {message}
             </aside>
         </>
