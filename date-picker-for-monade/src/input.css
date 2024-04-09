@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*  check user's preference for dark mode and adapt body's background for dark mode */
+:root {
+    --color-primary: #FFDA40;
+    --color-secondary: #b47e20;
+    --color-text: #292929;
+    --color-accent: var(--color-1437785);
+    --color-a5684de: #D9FD59;
+    --color-218a24f: #37FA57;
+    --color-c44f9e8: #05CCCD;
+    --color-fdea823: #0DBAFF;
+    --color-1437785: #0945DF;
+    --focus: var(--color-secondary);
+}
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--color-text);
+        --focus: #FFDA40;
+    }
+}
+
+/* outline color when focused using app colors */
+select:focus {
+    outline: 3px solid;
+    outline-color: var(--focus);
+    outline-offset: 2px;
+}
