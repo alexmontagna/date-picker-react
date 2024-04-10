@@ -6,7 +6,7 @@ export const setLang = (lang) => {
     currentLang = lang;
 };
 
-export const translate = (word) => {
+export const translate = (word, overrideLang) => {
     const translations = {
         'en': {
             'appTitle': 'Date Picker for Mònade',
@@ -28,7 +28,7 @@ export const translate = (word) => {
             'selectYearRange': 'Seleziona l\'intervallo di anni:',
             'changeLanguage': 'Change to English'
         }
-
     };
-    return translations[getLang()] ? translations[getLang()][word] : word;
+    const currentLang = overrideLang || getLang();
+    return translations[currentLang] ? translations[currentLang][word] : word;
 };

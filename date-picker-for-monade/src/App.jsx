@@ -3,13 +3,13 @@ import DatePicker from './DatePicker';
 import { translate, setLang, getLang } from './translate';
 
 const App = () => {
-  const [lang, setAppLang] = useState(getLang());
+  const [appLang, setAppLang] = useState(getLang());
   const [minDate, setMinDate] = useState(new Date(1900, 0, 1));
   const [maxDate, setMaxDate] = useState(new Date());
   const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   const toggleLanguage = () => {
-    const newLang = lang === 'en' ? 'it' : 'en';
+    const newLang = appLang === 'en' ? 'it' : 'en';
     setLang(newLang);
     setAppLang(newLang);
   };
@@ -60,6 +60,7 @@ const App = () => {
         isDarkMode={isDarkMode}
         minDate={minDate}
         maxDate={maxDate}
+        lang={appLang}
       />
       <div className="flex justify-center mt-16">
         <button onClick={toggleLanguage} className="bg-gray-200 p-2 rounded mt-4">

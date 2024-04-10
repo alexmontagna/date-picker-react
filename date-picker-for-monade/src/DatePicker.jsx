@@ -10,7 +10,7 @@ const getLocalizedMonths = () => {
     return Array.from({ length: 12 }, (_, i) => formatter.format(new Date(0, i)));
 };
 
-const DatePicker = ({ isDarkMode, minDate, maxDate }) => {
+const DatePicker = ({ isDarkMode, minDate, maxDate, lang }) => {
     const minYear = minDate.getFullYear();
     const maxYear = maxDate.getFullYear();
     const months = getLocalizedMonths();
@@ -40,14 +40,14 @@ const DatePicker = ({ isDarkMode, minDate, maxDate }) => {
                         {new Intl.DateTimeFormat(lang, { year: 'numeric', month: 'long', day: 'numeric' }).format(selectedDate)}
                     </span>
                 );
-            }
-            else if (day > newDaysInMonth) {
+                return;
+            } else if (day > newDaysInMonth) {
                 console.log(`daysInMonth: ${daysInMonth} | if day (${day}) > newDaysInMonth (${newDaysInMonth})`);
                 setDay(newDaysInMonth);
                 setTimeout(() => {
                     if (typeof document !== 'undefined') {
                         document.documentElement.style.setProperty('--focus', 'var(--color-accent)');
-                        setMessage(translate('dayOutOfRange'));
+                        setMessage(translate('dayOutOfRange', lang));
                         document.querySelector('select').focus();
                     }
                 }, 50);
@@ -56,10 +56,13 @@ const DatePicker = ({ isDarkMode, minDate, maxDate }) => {
                         document.documentElement.style.setProperty('--focus', 'var(--color-secondary)');
                     }
                 }, 3000);
-                
+                return;
             }
-        } 
-    }, [year, month, day]);
+        }
+        // Update the message for the default case when the language changes
+        setMessage(translate('selectDate', lang));
+    }, [year, month, day, lang, isDarkMode]); // Add lang to the dependency array
+    
 
     const baseClasses = "mr-2 p-2 rounded-lg cursor-pointer";
     const lightModeClasses = "bg-[#FFE88C] text-[#292929]";
