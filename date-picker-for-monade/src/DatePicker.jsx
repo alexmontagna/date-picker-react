@@ -61,9 +61,9 @@ const DatePicker = ({ isDarkMode, minDate, maxDate }) => {
         } 
     }, [year, month, day]);
 
-    const baseClasses = "mr-2 p-2";
+    const baseClasses = "mr-2 p-2 rounded-lg cursor-pointer";
     const lightModeClasses = "bg-[#FFE88C] text-[#292929]";
-    const darkModeClasses = "bg-gray-700 text-gray-100 border-2 border-[#FFE88C] rounded-lg";
+    const darkModeClasses = "bg-gray-700 text-gray-100 border-2 border-[#FFE88C]";
     const classes = `${baseClasses} ${(isDarkMode ? darkModeClasses : lightModeClasses)}`;
 
     return (
