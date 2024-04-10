@@ -1,22 +1,34 @@
-import { lang } from './DatePicker';
+let currentLang = 'en'; // Default language
+
+export const getLang = () => currentLang;
+
+export const setLang = (lang) => {
+    currentLang = lang;
+};
 
 export const translate = (word) => {
     const translations = {
         'en': {
+            'appTitle': 'Date Picker for Mònade',
             'Day': 'Day',
             'Month': 'Month',
             'Year': 'Year',
             'selectDate': 'Select a date',
-            'dayOutOfRange': 'Day was out of range, so it was set to the last day of the month.'
+            'dayOutOfRange': 'Day was out of range, so it was set to the last day of the month.',
+            'selectYearRange': 'Select the year range:',
+            'changeLanguage': 'Cambia all\'Italiano'
         },
         'it': {
+            'appTitle': 'Selettore di date per Mònade',
             'Day': 'Giorno',
             'Month': 'Mese',
             'Year': 'Anno',
             'selectDate': 'Seleziona una data',
-            'dayOutOfRange': 'Il giorno era fuori dal range, quindi è stato impostato all\'ultimo giorno del mese.'
-        },
-        // Add more languages as needed
+            'dayOutOfRange': 'Il giorno era fuori dal range, quindi è stato impostato all\'ultimo giorno del mese.',
+            'selectYearRange': 'Seleziona l\'intervallo di anni:',
+            'changeLanguage': 'Change to English'
+        }
+
     };
-    return translations[lang] ? translations[lang][word] : word;
+    return translations[getLang()] ? translations[getLang()][word] : word;
 };
